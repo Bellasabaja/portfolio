@@ -125,7 +125,9 @@ h2 {
   font-size: 0.92rem;
   padding: 8px 12px;
   border-radius: var(--radius-sm);
-  transition: color 0.2s, background 0.2s;
+  transition:
+    color 0.2s,
+    background 0.2s;
 }
 
 .nav-links a:hover {
@@ -177,8 +179,16 @@ h2 {
   align-items: center;
   padding-top: 120px;
   background:
-    radial-gradient(ellipse 60% 50% at 70% 20%, rgba(45, 212, 191, 0.08), transparent),
-    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(56, 189, 248, 0.05), transparent);
+    radial-gradient(
+      ellipse 60% 50% at 70% 20%,
+      rgba(45, 212, 191, 0.08),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 20% 80%,
+      rgba(56, 189, 248, 0.05),
+      transparent
+    );
 }
 
 .hero-kicker {
@@ -228,7 +238,10 @@ h2 {
   border-radius: var(--radius-sm);
   font-size: 0.98rem;
   font-weight: 600;
-  transition: transform 0.15s, background 0.2s, border-color 0.2s;
+  transition:
+    transform 0.15s,
+    background 0.2s,
+    border-color 0.2s;
   border: 1px solid transparent;
   cursor: pointer;
 }
@@ -323,7 +336,9 @@ h2 {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 24px;
-  transition: border-color 0.2s, transform 0.2s;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
 }
 
 .skill-group:hover {
@@ -409,7 +424,9 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  transition: border-color 0.2s, transform 0.2s;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
 }
 
 .project-card:hover {
@@ -451,6 +468,128 @@ h2 {
   display: flex;
   gap: 14px;
   font-size: 0.9rem;
+}
+
+/* Featured Case Study */
+.project-featured {
+  background: var(--surface);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius);
+  padding: 32px;
+  margin-bottom: 28px;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.project-featured .proj-type {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.project-featured h3 {
+  font-size: 1.5rem;
+  margin: 8px 0 4px;
+}
+
+.project-featured .role {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+.project-featured .case {
+  display: grid;
+  gap: 6px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.project-featured .case dt {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-top: 8px;
+}
+
+.project-featured .foot {
+  margin-top: 20px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Smartphone-Mockups (Platzhalter für Screenshots) */
+.phone-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.phone {
+  width: 130px;
+  aspect-ratio: 9 / 19;
+  background: #0a0f1c;
+  border: 3px solid #2a3a5c;
+  border-radius: 22px;
+  padding: 8px 7px;
+  position: relative;
+  flex-shrink: 0;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.phone.center {
+  width: 150px;
+  z-index: 1;
+}
+
+.phone::before {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 34%;
+  height: 8px;
+  background: #2a3a5c;
+  border-radius: 999px;
+}
+
+.phone .screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  background:
+    linear-gradient(160deg, var(--accent-soft), transparent 55%),
+    var(--bg-elevated);
+  border: 1px dashed var(--accent-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-faint);
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  line-height: 1.5;
+  padding: 10px;
+}
+
+@media (max-width: 860px) {
+  .project-featured {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+  .phone {
+    width: 104px;
+  }
+  .phone.center {
+    width: 120px;
+  }
 }
 
 /* ==========================================================================
@@ -556,7 +695,9 @@ h2 {
 .reveal {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
 }
 
 .reveal.visible {

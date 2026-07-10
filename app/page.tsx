@@ -5,6 +5,9 @@ import Reveal from "@/components/Reveal";
    Daten – hier kannst du Inhalte zentral pflegen
 --------------------------------------------------------------------------- */
 
+const EMAIL = "birgit.prokot@gmail.com";
+const GITHUB = "https://github.com/Bellasabaja";
+
 const skillGroups = [
   {
     title: "Frontend",
@@ -43,16 +46,25 @@ const strengths = [
   },
 ];
 
+// Featured Case Study
+const featuredProject = {
+  type: "Mobile App · Flutter · Google Play",
+  title: "Pferdeflüster-App",
+  role: "Alleinentwicklung · Flutter, Dart, Firebase",
+  problem:
+    "Eine fertig entwickelte und getestete Flutter-App produktionsreif machen und im Google Play Store veröffentlichen – vom Entwicklerkonto bis zur Einreichung zur Prüfung.",
+  challenge:
+    "Für neue persönliche Entwicklerkonten gelten seit 2023 strenge Auflagen: geschlossener Test mit mindestens 12 Testern über 14 Tage, dazu Code-Signierung, Datensicherheits-Erklärungen und ein vollständiges Store-Listing.",
+  solution:
+    "Kompletten Release-Prozess eigenständig umgesetzt: Google Play Developer-Konto eingerichtet, App-Inhalte und Datensicherheit deklariert, Store-Listing mit Assets erstellt, Gradle-Build und Code-Signierung konfiguriert (u. a. targetSdkVersion 34, Upload-Keystore), App Bundle gebaut, hochgeladen und zur Prüfung eingereicht.",
+  learnings:
+    "Der Weg von „Code fertig“ bis „App im Store“ ist ein eigenes Projekt: Compliance, Testrichtlinien, Signierung und Store-Präsentation gehören genauso zur App-Entwicklung wie der Code selbst.",
+  github: GITHUB,
+  screenshots: ["Screenshot 1 – folgt", "Screenshot 2 – folgt", "Screenshot 3 – folgt"],
+};
+
 // Platzhalter – Inhalte folgen im nächsten Schritt
 const projects = [
-  {
-    type: "Mobile App · Flutter",
-    title: "Projekt 1 – Titel folgt",
-    problem: "Kurzbeschreibung der Ausgangslage und des Problems.",
-    solution: "Wie die App das Problem löst, wichtigste Features.",
-    stack: "Flutter, Dart, Firebase",
-    learnings: "Was ich dabei gelernt habe.",
-  },
   {
     type: "Web App · Next.js",
     title: "Projekt 2 – Titel folgt",
@@ -123,9 +135,6 @@ const timeline = [
     past: true,
   },
 ];
-
-const EMAIL = "birgit.prokot@gmail.com";
-const GITHUB = "https://github.com/Bellasabaja";
 
 /* ---------------------------------------------------------------------------
    Seite
@@ -278,6 +287,44 @@ export default function Home() {
               <p className="section-label">Projekte</p>
               <h2>Case Studies aus der Ausbildung</h2>
             </Reveal>
+            {/* Featured: Pferdeflüster-App */}
+            <Reveal>
+              <article className="project-featured">
+                <div>
+                  <span className="proj-type">{featuredProject.type}</span>
+                  <h3>{featuredProject.title}</h3>
+                  <p className="role">{featuredProject.role}</p>
+                  <dl className="case">
+                    <dt>Problem &amp; Ziel</dt>
+                    <dd>{featuredProject.problem}</dd>
+                    <dt>Herausforderung</dt>
+                    <dd>{featuredProject.challenge}</dd>
+                    <dt>Lösung</dt>
+                    <dd>{featuredProject.solution}</dd>
+                    <dt>Learnings</dt>
+                    <dd>{featuredProject.learnings}</dd>
+                  </dl>
+                  <div className="foot">
+                    <a
+                      href={featuredProject.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-secondary"
+                    >
+                      Code auf GitHub →
+                    </a>
+                  </div>
+                </div>
+                <div className="phone-row" aria-label="Screenshot-Platzhalter">
+                  {featuredProject.screenshots.map((label, i) => (
+                    <div key={label} className={`phone${i === 1 ? " center" : ""}`}>
+                      <div className="screen">{label}</div>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            </Reveal>
+
             <div className="projects-grid">
               {projects.map((p) => (
                 <Reveal key={p.title}>
