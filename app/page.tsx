@@ -46,22 +46,47 @@ const strengths = [
   },
 ];
 
-// Featured Case Study
-const featuredProject = {
-  type: "Mobile App · Flutter · Google Play",
-  title: "Pferdeflüster-App",
-  role: "Alleinentwicklung · Flutter, Dart, Firebase",
-  problem:
-    "Eine fertig entwickelte und getestete Flutter-App produktionsreif machen und im Google Play Store veröffentlichen – vom Entwicklerkonto bis zur Einreichung zur Prüfung.",
-  challenge:
-    "Für neue persönliche Entwicklerkonten gelten seit 2023 strenge Auflagen: geschlossener Test mit mindestens 12 Testern über 14 Tage, dazu Code-Signierung, Datensicherheits-Erklärungen und ein vollständiges Store-Listing.",
-  solution:
-    "Kompletten Release-Prozess eigenständig umgesetzt: Google Play Developer-Konto eingerichtet, App-Inhalte und Datensicherheit deklariert, Store-Listing mit Assets erstellt, Gradle-Build und Code-Signierung konfiguriert (u. a. targetSdkVersion 34, Upload-Keystore), App Bundle gebaut, hochgeladen und zur Prüfung eingereicht.",
-  learnings:
-    "Der Weg von „Code fertig“ bis „App im Store“ ist ein eigenes Projekt: Compliance, Testrichtlinien, Signierung und Store-Präsentation gehören genauso zur App-Entwicklung wie der Code selbst.",
-  github: GITHUB,
-  screenshots: ["Screenshot 1 – folgt", "Screenshot 2 – folgt", "Screenshot 3 – folgt"],
-};
+// Featured Case Studies
+const featuredProjects = [
+  {
+    type: "Mobile App · Flutter · Google Play",
+    title: "Pferdeflüster-App",
+    role: "Alleinentwicklung · Flutter, Dart, Firebase",
+    problem:
+      "Eine fertig entwickelte und getestete Flutter-App produktionsreif machen und im Google Play Store veröffentlichen – vom Entwicklerkonto bis zur Einreichung zur Prüfung.",
+    challenge:
+      "Für neue persönliche Entwicklerkonten gelten seit 2023 strenge Auflagen: geschlossener Test mit mindestens 12 Testern über 14 Tage, dazu Code-Signierung, Datensicherheits-Erklärungen und ein vollständiges Store-Listing.",
+    solution:
+      "Kompletten Release-Prozess eigenständig umgesetzt: Google Play Developer-Konto eingerichtet, App-Inhalte und Datensicherheit deklariert, Store-Listing mit Assets erstellt, Gradle-Build und Code-Signierung konfiguriert (u. a. targetSdkVersion 34, Upload-Keystore), App Bundle gebaut, hochgeladen und zur Prüfung eingereicht.",
+    learnings:
+      "Der Weg von „Code fertig“ bis „App im Store“ ist ein eigenes Projekt: Compliance, Testrichtlinien, Signierung und Store-Präsentation gehören genauso zur App-Entwicklung wie der Code selbst.",
+    github: GITHUB,
+    screenshots: [
+      "Screenshot 1 – folgt",
+      "Screenshot 2 – folgt",
+      "Screenshot 3 – folgt",
+    ],
+  },
+  {
+    type: "AI-Tooling · MCP-Server",
+    title: "MCP-Server – Zitate-Sammlung",
+    role: "Alleinentwicklung · MCP-Framework, JSON-Persistenz, AI-First-Workflow",
+    problem:
+      "Inspirierende Zitate sammeln, kategorisieren und gezielt oder zufällig wiederfinden – direkt im AI-Chat. Umgesetzt als MCP-Server, dessen Tools Claude als Werkzeuge nutzen kann.",
+    challenge:
+      "Eine robuste Tool-Schnittstelle bauen: case-insensitive Suche über Zitattext und drei Tag-Typen (Autor, Thema, Sprache), Batch-Import mehrerer Zitate, zuverlässige JSON-Persistenz und fehlertolerantes Verhalten bei ungültigen Eingaben.",
+    solution:
+      "Datenmodell mit eindeutiger ID, Text, Erstellungsdatum und Tags entworfen; Tools für Speichern, Batch-Import, Suche, gefiltertes Zufalls-Zitat und Löschen implementiert und über die MCP-Schnittstelle angebunden. Entwickelt nach dem AI-First-Ansatz und mit Claude als MCP-Client getestet.",
+    learnings:
+      "Wie MCP als Brücke zwischen KI-Assistenten und eigenen Daten funktioniert – vom Tool-Design über robuste Fehlerbehandlung bis zum Testen mit einem echten MCP-Client.",
+    github: GITHUB,
+    screenshots: [
+      "Screenshot 1 – folgt",
+      "Screenshot 2 – folgt",
+      "Screenshot 3 – folgt",
+    ],
+  },
+];
 
 // Platzhalter – Inhalte folgen im nächsten Schritt
 const projects = [
@@ -71,14 +96,6 @@ const projects = [
     problem: "Kurzbeschreibung der Ausgangslage und des Problems.",
     solution: "Wie die App das Problem löst, wichtigste Features.",
     stack: "Next.js, TypeScript, Firestore",
-    learnings: "Was ich dabei gelernt habe.",
-  },
-  {
-    type: "AI-Integration",
-    title: "Projekt 3 – Titel folgt",
-    problem: "Kurzbeschreibung der Ausgangslage und des Problems.",
-    solution: "Wie die App das Problem löst, wichtigste Features.",
-    stack: "React, MCP-Server, Node.js",
     learnings: "Was ich dabei gelernt habe.",
   },
   {
@@ -287,43 +304,45 @@ export default function Home() {
               <p className="section-label">Projekte</p>
               <h2>Case Studies aus der Ausbildung</h2>
             </Reveal>
-            {/* Featured: Pferdeflüster-App */}
-            <Reveal>
-              <article className="project-featured">
-                <div>
-                  <span className="proj-type">{featuredProject.type}</span>
-                  <h3>{featuredProject.title}</h3>
-                  <p className="role">{featuredProject.role}</p>
-                  <dl className="case">
-                    <dt>Problem &amp; Ziel</dt>
-                    <dd>{featuredProject.problem}</dd>
-                    <dt>Herausforderung</dt>
-                    <dd>{featuredProject.challenge}</dd>
-                    <dt>Lösung</dt>
-                    <dd>{featuredProject.solution}</dd>
-                    <dt>Learnings</dt>
-                    <dd>{featuredProject.learnings}</dd>
-                  </dl>
-                  <div className="foot">
-                    <a
-                      href={featuredProject.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-secondary"
-                    >
-                      Code auf GitHub →
-                    </a>
-                  </div>
-                </div>
-                <div className="phone-row" aria-label="Screenshot-Platzhalter">
-                  {featuredProject.screenshots.map((label, i) => (
-                    <div key={label} className={`phone${i === 1 ? " center" : ""}`}>
-                      <div className="screen">{label}</div>
+            {/* Featured Case Studies */}
+            {featuredProjects.map((fp) => (
+              <Reveal key={fp.title}>
+                <article className="project-featured">
+                  <div>
+                    <span className="proj-type">{fp.type}</span>
+                    <h3>{fp.title}</h3>
+                    <p className="role">{fp.role}</p>
+                    <dl className="case">
+                      <dt>Problem &amp; Ziel</dt>
+                      <dd>{fp.problem}</dd>
+                      <dt>Herausforderung</dt>
+                      <dd>{fp.challenge}</dd>
+                      <dt>Lösung</dt>
+                      <dd>{fp.solution}</dd>
+                      <dt>Learnings</dt>
+                      <dd>{fp.learnings}</dd>
+                    </dl>
+                    <div className="foot">
+                      <a
+                        href={fp.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-secondary"
+                      >
+                        Code auf GitHub →
+                      </a>
                     </div>
-                  ))}
-                </div>
-              </article>
-            </Reveal>
+                  </div>
+                  <div className="phone-row" aria-label="Screenshot-Platzhalter">
+                    {fp.screenshots.map((label, i) => (
+                      <div key={label} className={`phone${i === 1 ? " center" : ""}`}>
+                        <div className="screen">{label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </article>
+              </Reveal>
+            ))}
 
             <div className="projects-grid">
               {projects.map((p) => (
