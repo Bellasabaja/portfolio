@@ -58,6 +58,7 @@ type FeaturedProject = {
   learnings: string;
   github: string;
   demo?: string; // optional – Live-Demo-Button
+  frame?: "phone" | "browser"; // Rahmen für Screenshots (Standard: phone)
   screenshots: string[];
 };
 
@@ -76,9 +77,9 @@ const featuredProjects: FeaturedProject[] = [
       "Der Weg von „Code fertig“ bis „App im Store“ ist ein eigenes Projekt: Compliance, Testrichtlinien, Signierung und Store-Präsentation gehören genauso zur App-Entwicklung wie der Code selbst.",
     github: `${GITHUB}/pferdefluester_app`,
     screenshots: [
-      "Screenshot 1 – folgt",
-      "Screenshot 2 – folgt",
-      "Screenshot 3 – folgt",
+      "/screenshots/pferd-splash.png",
+      "/screenshots/pferd-chat.png",
+      "/screenshots/pferd-login.png",
     ],
   },
   {
@@ -94,10 +95,11 @@ const featuredProjects: FeaturedProject[] = [
     learnings:
       "Wie MCP als Brücke zwischen KI-Assistenten und eigenen Daten funktioniert – vom Tool-Design über robuste Fehlerbehandlung bis zum Testen mit einem echten MCP-Client.",
     github: `${GITHUB}/MCP-Server`,
+    frame: "browser",
     screenshots: [
-      "Screenshot 1 – folgt",
-      "Screenshot 2 – folgt",
-      "Screenshot 3 – folgt",
+      "/screenshots/mcp-1.png",
+      "/screenshots/mcp-2.png",
+      "/screenshots/mcp-3.png",
     ],
   },
   {
@@ -115,10 +117,11 @@ const featuredProjects: FeaturedProject[] = [
     learnings:
       "Integration von Rust und Flutter über WebAssembly, Architektur mit austauschbaren Regelwerken (Strategy-Pattern) und der Umgang mit Performance an der Sprachgrenze zwischen Rust und Dart/JavaScript.",
     github: `${GITHUB}/cellular-automaton-rust-flutter`,
+    frame: "browser",
     screenshots: [
-      "Screenshot 1 – folgt",
-      "Screenshot 2 – folgt",
-      "Screenshot 3 – folgt",
+      "/screenshots/cellular-1.png",
+      "/screenshots/cellular-2.png",
+      "/screenshots/cellular-3.png",
     ],
   },
   {
@@ -136,10 +139,11 @@ const featuredProjects: FeaturedProject[] = [
     learnings:
       "Ein komplettes Produkt allein liefern – von Architektur über Auth und CRM bis zum Admin-Bereich – und Websites für die nächste Generation von Besuchern bauen: KI-Agenten, die Inhalte finden und Termine buchen können.",
     github: `${GITHUB}/Agent-ready-Website`,
+    frame: "browser",
     screenshots: [
-      "Screenshot 1 – folgt",
-      "Screenshot 2 – folgt",
-      "Screenshot 3 – folgt",
+      "/screenshots/agent-1.png",
+      "/screenshots/agent-2.png",
+      "/screenshots/agent-3.png",
     ],
   },
   {
@@ -159,9 +163,8 @@ const featuredProjects: FeaturedProject[] = [
     github: `${GITHUB}/Lehrer-Renten-Countdown`,
     demo: "https://lehrerin-renten-countdown.vercel.app",
     screenshots: [
-      "Screenshot 1 – folgt",
-      "Screenshot 2 – folgt",
-      "Screenshot 3 – folgt",
+      "/screenshots/countdown-1.png",
+      "/screenshots/countdown-2.png",
     ],
   },
 ];
@@ -408,21 +411,43 @@ export default function Home() {
                       </a>
                     </div>
                   </div>
-                  <div className="phone-row" aria-label="App-Screenshots">
-                    {fp.screenshots.map((shot, i) => (
-                      <div key={shot} className={`phone${i === 1 ? " center" : ""}`}>
-                        <div className="screen">
-                          {shot.startsWith("/") ? (
-                            // Bildpfad (Datei in public/ ablegen, z. B. "/screenshots/app1.png")
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img src={shot} alt={`${fp.title} Screenshot ${i + 1}`} />
-                          ) : (
-                            shot
-                          )}
+                  {fp.frame === "browser" ? (
+                    <div className="browser-col" aria-label="App-Screenshots">
+                      {fp.screenshots.map((shot, i) => (
+                        <div key={shot} className="browser">
+                          <div className="bar">
+                            <span />
+                            <span />
+                            <span />
+                          </div>
+                          <div className="bscreen">
+                            {shot.startsWith("/") ? (
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <img src={shot} alt={`${fp.title} Screenshot ${i + 1}`} />
+                            ) : (
+                              shot
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                  </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="phone-row" aria-label="App-Screenshots">
+                      {fp.screenshots.map((shot, i) => (
+                        <div key={shot} className={`phone${i === 1 ? " center" : ""}`}>
+                          <div className="screen">
+                            {shot.startsWith("/") ? (
+                              // Bildpfad (Datei in public/ ablegen, z. B. "/screenshots/app1.png")
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <img src={shot} alt={`${fp.title} Screenshot ${i + 1}`} />
+                            ) : (
+                              shot
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </article>
               </Reveal>
             ))}
