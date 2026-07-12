@@ -120,19 +120,29 @@ const featuredProjects: FeaturedProject[] = [
       "Screenshot 3 – folgt",
     ],
   },
-];
-
-// Platzhalter – Inhalte folgen im nächsten Schritt
-const projects = [
   {
-    type: "Web App · Next.js",
-    title: "Projekt 2 – Titel folgt",
-    problem: "Kurzbeschreibung der Ausgangslage und des Problems.",
-    solution: "Wie die App das Problem löst, wichtigste Features.",
-    stack: "Next.js, TypeScript, Firestore",
-    learnings: "Was ich dabei gelernt habe.",
+    type: "Web App · Next.js · Abschlussprojekt",
+    title: "Mobile Massage – Agent-ready Webpräsenz",
+    role: "Alleinentwicklung · Next.js 16, TypeScript, Tailwind CSS v4, Firebase (Firestore, Auth, Storage), Brevo API, Cal.com, Vercel",
+    problem:
+      "Eine komplette Webpräsenz mit dem Funktionsumfang einer kleinen Webagentur – allein umgesetzt: Landing Page, Blog/CMS, kleiner Shop, Kundenlogin, Newsletter (CRM) und Admin-Dashboard. Entwickelt für die geplante mobile Massage-Praxis meines Sohnes.",
+    challenge:
+      "Strikte Budget- und Zeitvorgaben: maximal 2 €/Monat, ausschließlich Free-Tier-Dienste, keine laufenden Serverkosten. Zusätzlich als Agent-ready Website (GEO/AEO) ausgelegt – auffindbar und buchbar nicht nur für Menschen, sondern auch für KI-Agenten.",
+    solution:
+      "AI-First entwickelt: öffentlicher Bereich mit Terminbuchung über Cal.com (inkl. MCP-Schnittstelle für KI-Agenten), Blog mit dynamischem News-Feed aus Firestore, Shop mit Warenkorb, Kundenlogin/-registrierung und Newsletter-Anmeldung. Geschütztes Admin-Dashboard mit Statistiken, Blog-Verwaltung inkl. Bild-Upload und Newsletter-Versand über die Brevo API. Für KI-Auffindbarkeit: strukturierte Daten (schema.org LocalBusiness als JSON-LD) sowie llms.txt und ai.txt.",
+    result:
+      "Technisch fertig aufgebaut, Budgetziel erreicht (0 € laufende Kosten durch Free-Tier). Live-Gang geplant zum Start des Massage-Angebots nach der Physiotherapie-Ausbildung meines Sohnes (voraussichtlich 2027) – dann mit echten Daten in einem eigenen, nicht-öffentlichen Setup.",
+    learnings:
+      "Ein komplettes Produkt allein liefern – von Architektur über Auth und CRM bis zum Admin-Bereich – und Websites für die nächste Generation von Besuchern bauen: KI-Agenten, die Inhalte finden und Termine buchen können.",
+    github: GITHUB,
+    screenshots: [
+      "Screenshot 1 – folgt",
+      "Screenshot 2 – folgt",
+      "Screenshot 3 – folgt",
+    ],
   },
 ];
+
 
 const timeline = [
   {
@@ -384,31 +394,6 @@ export default function Home() {
               </Reveal>
             ))}
 
-            <div className="projects-grid">
-              {projects.map((p) => (
-                <Reveal key={p.title}>
-                  <article className="project-card">
-                    <span className="proj-type">{p.type}</span>
-                    <h3>{p.title}</h3>
-                    <dl className="case">
-                      <dt>Problem</dt>
-                      <dd>{p.problem}</dd>
-                      <dt>Lösung</dt>
-                      <dd>{p.solution}</dd>
-                      <dt>Stack</dt>
-                      <dd>{p.stack}</dd>
-                      <dt>Learnings</dt>
-                      <dd>{p.learnings}</dd>
-                    </dl>
-                    <div className="foot">
-                      <a href={GITHUB} target="_blank" rel="noopener noreferrer">
-                        Code auf GitHub →
-                      </a>
-                    </div>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
           </div>
         </section>
 
