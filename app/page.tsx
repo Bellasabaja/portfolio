@@ -47,7 +47,20 @@ const strengths = [
 ];
 
 // Featured Case Studies
-const featuredProjects = [
+type FeaturedProject = {
+  type: string;
+  title: string;
+  role: string;
+  problem: string;
+  challenge: string;
+  solution: string;
+  result?: string; // optional – nur anzeigen, wenn vorhanden
+  learnings: string;
+  github: string;
+  screenshots: string[];
+};
+
+const featuredProjects: FeaturedProject[] = [
   {
     type: "Mobile App · Flutter · Google Play",
     title: "Pferdeflüster-App",
@@ -86,6 +99,27 @@ const featuredProjects = [
       "Screenshot 3 – folgt",
     ],
   },
+  {
+    type: "Simulation · Rust + WebAssembly · Flutter Web",
+    title: "Cellular Automaton",
+    role: "Alleinentwicklung · Rust (wasm-bindgen, wasm-pack), Flutter Web, Riverpod, serde",
+    problem:
+      "Ein robuster Proof of Concept nach professionellen Standards (2000+ Zeilen Code): eine interaktive Browser-Simulation zellularer Automaten – als langlebige, modulare Software-Basis statt einfacher Bastelarbeit.",
+    challenge:
+      "Zwei Welten verbinden: ein performanter Simulationskern in Rust, der als WebAssembly-Modul im Browser läuft, angebunden an eine Flutter-Web-Oberfläche – inklusive Performance-Überlegungen bei der Übergabe größerer Datenmengen zwischen Rust und Dart/JavaScript.",
+    solution:
+      "Simulationskern „ca_core“ in Rust mit Strategy-Pattern für vier zur Laufzeit umschaltbare Regelwerke (Game of Life, High Life, Maze, Seeds), via wasm-pack zu WebAssembly kompiliert. Flutter-UI mit Riverpod-State-Management: Play/Step/Reset, einstellbare Geschwindigkeit, Live-Anzeige von Generation und lebenden Zellen, Export als CSV, JSON und PNG.",
+    result:
+      "Alle vier Regelwerke getestet und stabil im Browser lauffähig – modular erweiterbar um weitere Regelwerke und Exportformate.",
+    learnings:
+      "Integration von Rust und Flutter über WebAssembly, Architektur mit austauschbaren Regelwerken (Strategy-Pattern) und der Umgang mit Performance an der Sprachgrenze zwischen Rust und Dart/JavaScript.",
+    github: GITHUB,
+    screenshots: [
+      "Screenshot 1 – folgt",
+      "Screenshot 2 – folgt",
+      "Screenshot 3 – folgt",
+    ],
+  },
 ];
 
 // Platzhalter – Inhalte folgen im nächsten Schritt
@@ -96,14 +130,6 @@ const projects = [
     problem: "Kurzbeschreibung der Ausgangslage und des Problems.",
     solution: "Wie die App das Problem löst, wichtigste Features.",
     stack: "Next.js, TypeScript, Firestore",
-    learnings: "Was ich dabei gelernt habe.",
-  },
-  {
-    type: "Performance · Rust/WASM",
-    title: "Projekt 4 – Titel folgt",
-    problem: "Kurzbeschreibung der Ausgangslage und des Problems.",
-    solution: "Wie die App das Problem löst, wichtigste Features.",
-    stack: "Rust, WebAssembly, TypeScript",
     learnings: "Was ich dabei gelernt habe.",
   },
 ];
@@ -319,6 +345,12 @@ export default function Home() {
                       <dd>{fp.challenge}</dd>
                       <dt>Lösung</dt>
                       <dd>{fp.solution}</dd>
+                      {fp.result && (
+                        <>
+                          <dt>Ergebnis</dt>
+                          <dd>{fp.result}</dd>
+                        </>
+                      )}
                       <dt>Learnings</dt>
                       <dd>{fp.learnings}</dd>
                     </dl>
@@ -333,10 +365,18 @@ export default function Home() {
                       </a>
                     </div>
                   </div>
-                  <div className="phone-row" aria-label="Screenshot-Platzhalter">
-                    {fp.screenshots.map((label, i) => (
-                      <div key={label} className={`phone${i === 1 ? " center" : ""}`}>
-                        <div className="screen">{label}</div>
+                  <div className="phone-row" aria-label="App-Screenshots">
+                    {fp.screenshots.map((shot, i) => (
+                      <div key={shot} className={`phone${i === 1 ? " center" : ""}`}>
+                        <div className="screen">
+                          {shot.startsWith("/") ? (
+                            // Bildpfad (Datei in public/ ablegen, z. B. "/screenshots/app1.png")
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img src={shot} alt={`${fp.title} Screenshot ${i + 1}`} />
+                          ) : (
+                            shot
+                          )}
+                        </div>
                       </div>
                     ))}
                   </div>
