@@ -516,6 +516,10 @@ export default function Home() {
             Next.js
           </a>{" "}
           &amp; TypeScript · Gehostet auf Vercel
+          <div className="footer-legal">
+            <a href="/impressum">Impressum</a> ·{" "}
+            <a href="/datenschutz">Datenschutz</a>
+          </div>
         </div>
       </footer>
     </>
