@@ -41,6 +41,7 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden; /* Sicherheitsnetz gegen horizontales Verschieben */
 }
 
 ::selection {
@@ -466,6 +467,10 @@ h2 {
   align-items: center;
 }
 
+.project-featured > * {
+  min-width: 0; /* verhindert Grid-Overflow durch lange Inhalte */
+}
+
 .project-featured .proj-type {
   font-family: var(--mono);
   font-size: 0.75rem;
@@ -642,13 +647,17 @@ h2 {
 @media (max-width: 860px) {
   .project-featured {
     grid-template-columns: 1fr;
-    padding: 24px;
+    padding: 20px;
   }
+  .phone-row {
+    gap: 10px;
+  }
+  /* Rahmen skalieren mit der Bildschirmbreite statt fester Breite */
   .phone {
-    width: 104px;
+    width: clamp(76px, 24vw, 110px);
   }
   .phone.center {
-    width: 120px;
+    width: clamp(88px, 28vw, 128px);
   }
 }
 
