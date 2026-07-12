@@ -57,6 +57,7 @@ type FeaturedProject = {
   result?: string; // optional – nur anzeigen, wenn vorhanden
   learnings: string;
   github: string;
+  demo?: string; // optional – Live-Demo-Button
   screenshots: string[];
 };
 
@@ -66,14 +67,14 @@ const featuredProjects: FeaturedProject[] = [
     title: "Pferdeflüster-App",
     role: "Alleinentwicklung · Flutter, Dart, Firebase",
     problem:
-      "Eine fertig entwickelte und getestete Flutter-App produktionsreif machen und im Google Play Store veröffentlichen – vom Entwicklerkonto bis zur Einreichung zur Prüfung.",
+      "Eine Echtzeit-Chat-App für die Reiter-Community, gebaut mit Flutter und Firebase – und der komplette Weg zur Veröffentlichung im Google Play Store: vom Entwicklerkonto bis zur Einreichung zur Prüfung.",
     challenge:
       "Für neue persönliche Entwicklerkonten gelten seit 2023 strenge Auflagen: geschlossener Test mit mindestens 12 Testern über 14 Tage, dazu Code-Signierung, Datensicherheits-Erklärungen und ein vollständiges Store-Listing.",
     solution:
       "Kompletten Release-Prozess eigenständig umgesetzt: Google Play Developer-Konto eingerichtet, App-Inhalte und Datensicherheit deklariert, Store-Listing mit Assets erstellt, Gradle-Build und Code-Signierung konfiguriert (u. a. targetSdkVersion 34, Upload-Keystore), App Bundle gebaut, hochgeladen und zur Prüfung eingereicht.",
     learnings:
       "Der Weg von „Code fertig“ bis „App im Store“ ist ein eigenes Projekt: Compliance, Testrichtlinien, Signierung und Store-Präsentation gehören genauso zur App-Entwicklung wie der Code selbst.",
-    github: GITHUB,
+    github: `${GITHUB}/pferdefluester_app`,
     screenshots: [
       "Screenshot 1 – folgt",
       "Screenshot 2 – folgt",
@@ -92,7 +93,7 @@ const featuredProjects: FeaturedProject[] = [
       "Datenmodell mit eindeutiger ID, Text, Erstellungsdatum und Tags entworfen; Tools für Speichern, Batch-Import, Suche, gefiltertes Zufalls-Zitat und Löschen implementiert und über die MCP-Schnittstelle angebunden. Entwickelt nach dem AI-First-Ansatz und mit Claude als MCP-Client getestet.",
     learnings:
       "Wie MCP als Brücke zwischen KI-Assistenten und eigenen Daten funktioniert – vom Tool-Design über robuste Fehlerbehandlung bis zum Testen mit einem echten MCP-Client.",
-    github: GITHUB,
+    github: `${GITHUB}/MCP-Server`,
     screenshots: [
       "Screenshot 1 – folgt",
       "Screenshot 2 – folgt",
@@ -113,7 +114,7 @@ const featuredProjects: FeaturedProject[] = [
       "Alle vier Regelwerke getestet und stabil im Browser lauffähig – modular erweiterbar um weitere Regelwerke und Exportformate.",
     learnings:
       "Integration von Rust und Flutter über WebAssembly, Architektur mit austauschbaren Regelwerken (Strategy-Pattern) und der Umgang mit Performance an der Sprachgrenze zwischen Rust und Dart/JavaScript.",
-    github: GITHUB,
+    github: `${GITHUB}/cellular-automaton-rust-flutter`,
     screenshots: [
       "Screenshot 1 – folgt",
       "Screenshot 2 – folgt",
@@ -134,7 +135,29 @@ const featuredProjects: FeaturedProject[] = [
       "Technisch fertig aufgebaut, Budgetziel erreicht (0 € laufende Kosten durch Free-Tier). Live-Gang geplant zum Start des Massage-Angebots nach der Physiotherapie-Ausbildung meines Sohnes (voraussichtlich 2027) – dann mit echten Daten in einem eigenen, nicht-öffentlichen Setup.",
     learnings:
       "Ein komplettes Produkt allein liefern – von Architektur über Auth und CRM bis zum Admin-Bereich – und Websites für die nächste Generation von Besuchern bauen: KI-Agenten, die Inhalte finden und Termine buchen können.",
-    github: GITHUB,
+    github: `${GITHUB}/Agent-ready-Website`,
+    screenshots: [
+      "Screenshot 1 – folgt",
+      "Screenshot 2 – folgt",
+      "Screenshot 3 – folgt",
+    ],
+  },
+  {
+    type: "PWA · React · Persönliches Projekt",
+    title: "Dein Weg in die Freiheit – Renten-Countdown",
+    role: "Konzeption & Entwicklung im AI-First-Workflow (mit Manus) · React 19, Tailwind CSS 4, TypeScript, PWA/Service Worker",
+    problem:
+      "Ein persönliches Geschenk für eine Lehrerin in Bayern: ein eleganter Countdown zum Renteneintritt (03.08.2026, Ferienbeginn) – als App direkt auf dem iPhone-Home-Bildschirm, ohne Umweg über den App Store.",
+    challenge:
+      "Eine Web-App, die sich wie eine native App anfühlt: Installation über Safari („Zum Home-Bildschirm“), Offline-Funktionalität per Service Worker, responsive für alle iPhone-Größen – und ein Design, das Vorfreude transportiert statt Technik.",
+    solution:
+      "Progressive Web App mit React 19 und Tailwind CSS 4: Countdown-Logik in Monaten, Wochen und Tagen; in den letzten 4 Wochen täglich einer von 28 humorvoll-ermutigenden Lehrer-Sprüchen. Elegant-verspieltes Design mit Pastellpalette (Roségold, Lavendel, Minzgrün), Playfair Display/Poppins und Wellen-Animationen. PWA-Manifest und Service Worker für Offline-Nutzung – ohne externe Datenübertragungen.",
+    result:
+      "Live auf Vercel und im Einsatz – direkt vom iPhone-Home-Bildschirm startbar.",
+    learnings:
+      "PWA-Grundlagen (Manifest, Service Worker, iOS-Besonderheiten), emotionales UI-Design – und wie man im AI-First-Workflow mit einem KI-Agenten entwickelt: Ergebnisse prüfen, kuratieren und für den Praxiseinsatz polieren.",
+    github: `${GITHUB}/Lehrer-Renten-Countdown`,
+    demo: "https://lehrerin-renten-countdown.vercel.app",
     screenshots: [
       "Screenshot 1 – folgt",
       "Screenshot 2 – folgt",
@@ -365,6 +388,16 @@ export default function Home() {
                       <dd>{fp.learnings}</dd>
                     </dl>
                     <div className="foot">
+                      {fp.demo && (
+                        <a
+                          href={fp.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-primary"
+                        >
+                          Live-Demo →
+                        </a>
+                      )}
                       <a
                         href={fp.github}
                         target="_blank"
