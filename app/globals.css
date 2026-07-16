@@ -319,6 +319,17 @@ h2 {
   gap: 18px;
 }
 
+/* Gleiche Kartenhöhen in Skills- und Stärken-Raster */
+.skills-grid .reveal,
+.strengths .reveal {
+  height: 100%;
+}
+
+.skills-grid .skill-group,
+.strengths .strength {
+  height: 100%;
+}
+
 .skill-group {
   background: var(--surface);
   border: 1px solid var(--border);

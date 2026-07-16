@@ -25,6 +25,10 @@ const skillGroups = [
     title: "Tools & Weiteres",
     skills: ["Git / GitHub", "MCP-Server", "Java", "PHP", "Linux (Grundkenntnisse)"],
   },
+  {
+    title: "Sprachen",
+    skills: ["Deutsch (Muttersprache)", "Englisch (B1)"],
+  },
 ];
 
 const strengths = [
@@ -500,9 +504,23 @@ export default function Home() {
                 >
                   GitHub-Profil
                 </a>
+                <a
+                  href="/cv/lebenslauf-birgit-prokot-de.pdf"
+                  download
+                  className="btn btn-secondary"
+                >
+                  Lebenslauf (PDF)
+                </a>
+                <a
+                  href="/cv/lebenslauf-birgit-prokot-en.pdf"
+                  download
+                  className="btn btn-secondary"
+                >
+                  CV – English (PDF)
+                </a>
               </div>
               <p className="contact-meta">
-                {EMAIL} · Obervolkach, Bayern
+                <a href={`mailto:${EMAIL}`}>{EMAIL}</a> · Obervolkach, Bayern
               </p>
             </Reveal>
           </div>
