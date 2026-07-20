@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://birgit-prokot.de"),
   title: "Birgit Prokot | AI Mobile App Developer",
   description:
     "Portfolio von Birgit Prokot – AI Mobile App Developer mit Schwerpunkt Full-Stack-Webentwicklung. React, TypeScript, Next.js, Firebase, Flutter/Dart.",
@@ -19,6 +20,8 @@ export const metadata: Metadata = {
     title: "Birgit Prokot | AI Mobile App Developer",
     description:
       "Karrierewechslerin mit 25 Jahren Berufserfahrung – jetzt App-Entwicklerin mit React, TypeScript, Next.js, Firebase und Flutter.",
+    url: "https://birgit-prokot.de",
+    siteName: "Birgit Prokot – Portfolio",
     locale: "de_DE",
     type: "website",
   },

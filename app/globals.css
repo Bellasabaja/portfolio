@@ -465,6 +465,88 @@ h2 {
   font-size: 0.9rem;
 }
 
+/* ==========================================================================
+   Live-Demo: Game of Life
+   ========================================================================== */
+.gol {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  background: #0a0f1c;
+  border: 3px solid #2a3a5c;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.gol-canvas-wrap {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-elevated);
+}
+
+.gol-canvas-wrap canvas {
+  display: block;
+  cursor: crosshair;
+  touch-action: manipulation;
+}
+
+.gol-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 12px;
+  background: #111a2e;
+  border-top: 1px solid #2a3a5c;
+}
+
+.gol-stats {
+  display: flex;
+  gap: 14px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-faint);
+}
+
+.gol-stats strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.gol-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.gol-buttons button {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.gol-buttons button:hover {
+  background: rgba(45, 212, 191, 0.22);
+}
+
+.gol-hint {
+  margin: 10px auto 0;
+  max-width: 440px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-faint);
+}
+
 /* Featured Case Study */
 .project-featured {
   background: var(--surface);

@@ -1,5 +1,6 @@
 import Nav from "@/components/Nav";
 import Reveal from "@/components/Reveal";
+import GameOfLife from "@/components/GameOfLife";
 
 /* ---------------------------------------------------------------------------
    Daten – hier kannst du Inhalte zentral pflegen
@@ -63,6 +64,7 @@ type FeaturedProject = {
   github: string;
   demo?: string; // optional – Live-Demo-Button
   frame?: "phone" | "browser"; // Rahmen für Screenshots (Standard: phone)
+  live?: boolean; // zeigt zusätzlich die interaktive Game-of-Life-Demo
   screenshots: string[];
 };
 
@@ -122,6 +124,7 @@ const featuredProjects: FeaturedProject[] = [
       "Integration von Rust und Flutter über WebAssembly, Architektur mit austauschbaren Regelwerken (Strategy-Pattern) und der Umgang mit Performance an der Sprachgrenze zwischen Rust und Dart/JavaScript.",
     github: `${GITHUB}/cellular-automaton-rust-flutter`,
     frame: "browser",
+    live: true,
     screenshots: [
       "/screenshots/cellular-1.png",
       "/screenshots/cellular-2.png",
@@ -417,6 +420,15 @@ export default function Home() {
                   </div>
                   {fp.frame === "browser" ? (
                     <div className="browser-col" aria-label="App-Screenshots">
+                      {fp.live && (
+                        <div>
+                          <GameOfLife />
+                          <p className="gol-hint">
+                            Live-Demo: Game of Life im Browser – klicken Sie
+                            ins Raster, um eigene Zellen zu setzen.
+                          </p>
+                        </div>
+                      )}
                       {fp.screenshots.map((shot, i) => (
                         <div key={shot} className="browser">
                           <div className="bar">
