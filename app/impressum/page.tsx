@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function Impressum() {
   return (
-    <main className="legal">
+    <main id="inhalt" className="legal">
       <div className="container">
         <Link href="/" className="back-link">
           ← Zurück zur Startseite

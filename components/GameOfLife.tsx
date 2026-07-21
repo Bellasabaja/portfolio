@@ -197,15 +197,15 @@ export default function GameOfLife() {
   return (
     <div className="gol">
       <div className="gol-canvas-wrap" ref={wrapRef}>
-        <canvas
-          ref={canvasRef}
-          onClick={toggleCell}
-          aria-label="Interaktive Game-of-Life-Simulation – klicken Sie, um Zellen zu setzen"
-          role="img"
-        />
+        <canvas ref={canvasRef} onClick={toggleCell} role="presentation" />
       </div>
+      <p className="sr-only">
+        Dekorative Simulation des Spiels des Lebens. Zellen entstehen und
+        sterben nach festen Regeln. Die Darstellung ist rein visuell; alle
+        Informationen dazu stehen im Text der Case Study.
+      </p>
       <div className="gol-bar">
-        <div className="gol-stats">
+        <div className="gol-stats" aria-live="off">
           <span>
             Generation <strong>{generation}</strong>
           </span>
